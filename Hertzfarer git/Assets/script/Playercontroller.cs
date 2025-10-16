@@ -39,6 +39,20 @@ public class Playercontroller : MonoBehaviour
 
         HandleMovement();
         HandleLook();
+        RaycastHit hit;
+        Debug.DrawRay(cameraTransform.position, cameraTransform.forward, Color.green);
+            if(Physics.Raycast(cameraTransform.position, cameraTransform.forward,out hit, 10f, 11))
+            {
+
+                Debug.Log(hit.collider.gameObject.tag);   
+                if (hit.collider.GetComponent<Door>() != null)
+                {
+                    if (Input.GetKeyDown(KeyCode.E)){
+                        Debug.Log("E");
+                        hit.collider.GetComponent<Door>().Open();
+                    }
+                }
+            }
     }
 
     void HandleMovement()
@@ -88,4 +102,6 @@ public class Playercontroller : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
+
+
 }
