@@ -12,6 +12,8 @@ public class Seat : Interactable
     private GameObject player;
     [SerializeField]
     private Door door;
+    [SerializeField]
+    private GameObject car;
 
     private bool isInside = false, transitioning = false;
 
@@ -23,6 +25,7 @@ public class Seat : Interactable
         transitioning = true;
         if (isInside)
         {
+            player.transform.parent = car.transform;
             player.GetComponent<Playercontroller>().SetControlsEnabled(false);
 
             player.GetComponent<CapsuleCollider>().enabled = false;
@@ -47,7 +50,7 @@ public class Seat : Interactable
                     player.GetComponent<Rigidbody>().isKinematic = true;
                     player.GetComponent<Rigidbody>().useGravity = true;
                     player.GetComponent<Playercontroller>().SetControlsEnabled(true);
-
+                    player.transform.parent = null;
                 }
 
             }
