@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : Interactable
 {
     [Header("Assignables")]
     [SerializeField]
@@ -21,6 +21,11 @@ public class Door : MonoBehaviour
 
     }
     public void Open()
+    {
+
+    }
+
+    public override void Interact()
     {
         if (locked) return;
         closed = !closed;
