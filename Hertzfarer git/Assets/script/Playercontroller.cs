@@ -34,10 +34,6 @@ public class Playercontroller : MonoBehaviour
 
     void Update()
     {
-        if (!controlsEnabled)
-            return; // Stop all movement and look
-
-        HandleMovement();
         HandleLook();
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -53,6 +49,11 @@ public class Playercontroller : MonoBehaviour
                 }
             }
         }
+        if (!controlsEnabled)
+            return; // Stop all movement
+
+        HandleMovement();
+
     }
 
     void HandleMovement()
