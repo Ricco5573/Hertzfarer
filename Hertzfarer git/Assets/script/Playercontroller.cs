@@ -40,7 +40,7 @@ public class Playercontroller : MonoBehaviour
         {
             RaycastHit hit;
             Debug.DrawRay(cameraTransform.position, cameraTransform.forward, Color.green);
-            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, 10f))
+            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, 10f, ~11, QueryTriggerInteraction.Collide))
             {
                 if (hit.collider.CompareTag("Interactible"))
                 {

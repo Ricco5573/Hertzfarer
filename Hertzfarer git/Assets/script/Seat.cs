@@ -1,3 +1,4 @@
+using MVC.Core;
 using UnityEngine;
 
 public class Seat : Interactable
@@ -14,6 +15,8 @@ public class Seat : Interactable
     private Door door;
     [SerializeField]
     private GameObject car;
+    [SerializeField]
+    private Vehicle vic;
 
     private bool isInside = false, transitioning = false;
 
@@ -27,7 +30,7 @@ public class Seat : Interactable
         {
             player.transform.parent = car.transform;
             player.GetComponent<Playercontroller>().SetControlsEnabled(false);
-
+            vic.enabled = true;
             player.GetComponent<CapsuleCollider>().enabled = false;
             player.GetComponent<Rigidbody>().isKinematic = false;
             player.GetComponent<Rigidbody>().useGravity = false;
@@ -51,6 +54,8 @@ public class Seat : Interactable
                     player.GetComponent<Rigidbody>().useGravity = true;
                     player.GetComponent<Playercontroller>().SetControlsEnabled(true);
                     player.transform.parent = null;
+                    vic.enabled = false;
+
                 }
 
             }
